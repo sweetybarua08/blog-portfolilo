@@ -6,6 +6,8 @@ import { Projects } from "./pages/Projects";
 import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "@/components/ui/toaster";
+import { Blog } from "./pages/Blog";
+import { BlogPost } from "./pages/BlogPost";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

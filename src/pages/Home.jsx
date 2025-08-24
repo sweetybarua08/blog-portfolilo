@@ -3,6 +3,7 @@ import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { Footer } from "../components/Footer";
+import { BlogSection } from "../components/BlogSection";
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
       {/* Main Content */}
       <main>
         <HeroSection />
+        <BlogSection />
       </main>
 
       {/* Footer */}
