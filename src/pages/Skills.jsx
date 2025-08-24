@@ -1,10 +1,10 @@
 import { Navbar } from "../components/Navbar";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
-import { HeroSection } from "../components/HeroSection";
+import { SkillsSection } from "../components/SkillsSection";
 import { Footer } from "../components/Footer";
 
-export const Home = () => {
+export const Skills = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Theme Toggle */}
@@ -16,7 +16,7 @@ export const Home = () => {
       <Navbar />
       {/* Main Content */}
       <main>
-        <HeroSection />
+        <SkillsSection />
       </main>
 
       {/* Footer */}
