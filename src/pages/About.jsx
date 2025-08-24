@@ -10,7 +10,7 @@ export const About = () => {
       {/* Theme Toggle */}
       <ThemeToggle />
       {/* Background Effects */}
-      <StarBackground />
+      {/* <StarBackground /> */}
 
       {/* Navbar */}
       <Navbar />
