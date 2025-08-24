@@ -19,9 +19,9 @@ export const AboutSection = () => {
           </p>
         </div>
 
-        {/* <TechStack /> */}
+        <TechStack />
 
-        {/* <PopularRepos /> */}
+        <PopularRepos />
       </div>
     </section>
   );

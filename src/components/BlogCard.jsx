@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 
 export const BlogCard = ({ post }) => {
   return (
-    <div className="bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <Link to={`/blog/${post.id}`}>
-        <img src={post.image} alt={post.title} className="rounded-lg mb-4 w-full h-48 object-cover"/>
-        <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-        <p className="text-muted-foreground mb-4">
-          {new Date(post.date).toLocaleDateString()} - {post.readingTime} min read
-        </p>
-        <p className="text-muted-foreground">{post.content.substring(0, 100)}...</p>
+    <div className="bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+      <Link to={`/blog/${post.id}`} className="flex flex-col md:flex-row">
+        <div className="md:w-1/3">
+          <img src={post.image} alt={post.title} className="w-full h-full object-cover"/>
+        </div>
+        <div className="p-6 md:w-2/3">
+          <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+          <p className="text-muted-foreground mb-4">
+            {new Date(post.date).toLocaleDateString()} - {post.readingTime} min read
+          </p>
+          <p className="text-muted-foreground">{post.content.substring(0, 150)}...</p>
+        </div>
       </Link>
     </div>
   );
