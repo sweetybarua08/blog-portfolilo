@@ -20,7 +20,7 @@ export const BlogPost = () => {
       <ThemeToggle />
       {/* <StarBackground /> */}
       <Navbar />
-      <div className="container mx-auto px-4 py-8 flex">
+      <div className="container mx-auto px-4 py-8 flex pt-20">
         <OtherBlogs blogs={blogData} currentPostId={post.id} />
         <main className="w-2/3 pl-12">
           <article>
@@ -28,7 +28,6 @@ export const BlogPost = () => {
             <p className="text-muted-foreground mb-8">
               {new Date(post.date).toLocaleDateString()} - {post.readingTime} min read
             </p>
-            <img src={post.image} alt={post.title} className="rounded-lg mb-8 w-full" />
             <div className="prose prose-invert max-w-none">
               {post.content}
             </div>
