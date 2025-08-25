@@ -22,7 +22,7 @@ export const BlogPost = () => {
       <Navbar />
       <div className="container mx-auto px-4 py-8 flex">
         <OtherBlogs blogs={blogData} currentPostId={post.id} />
-        <main className="w-3/4 pl-8">
+        <main className="w-2/3 pl-12">
           <article>
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
             <p className="text-muted-foreground mb-8">

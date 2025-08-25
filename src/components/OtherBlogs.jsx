@@ -4,12 +4,12 @@ export const OtherBlogs = ({ blogs, currentPostId }) => {
   const otherBlogs = blogs.filter((blog) => blog.id !== currentPostId);
 
   return (
-    <aside className="w-1/4 p-4">
-      <h2 className="text-2xl font-bold mb-4">Other Posts</h2>
+    <aside className="w-1/3 p-6 border-r border-gray-700">
+      <h2 className="text-xl font-semibold mb-4">Other Posts</h2>
       <ul>
         {otherBlogs.map((blog) => (
-          <li key={blog.id} className="mb-2">
-            <Link to={`/blog/${blog.id}`} className="hover:underline">
+          <li key={blog.id} className="mb-4 pb-2 border-b border-gray-800">
+            <Link to={`/blog/${blog.id}`} className="text-foreground hover:underline">
               {blog.title}
             </Link>
           </li>
