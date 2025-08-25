@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { NotFound } from "./NotFound";
+import { OtherBlogs } from "../components/OtherBlogs";
 
 export const BlogPost = () => {
   const { id } = useParams();
@@ -19,18 +20,21 @@ export const BlogPost = () => {
       <ThemeToggle />
       {/* <StarBackground /> */}
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <article>
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <p className="text-muted-foreground mb-8">
-            {new Date(post.date).toLocaleDateString()} - {post.readingTime} min read
-          </p>
-          <img src={post.image} alt={post.title} className="rounded-lg mb-8 w-full" />
-          <div className="prose prose-invert max-w-none">
-            {post.content}
-          </div>
-        </article>
-      </main>
+      <div className="container mx-auto px-4 py-8 flex">
+        <OtherBlogs blogs={blogData} currentPostId={post.id} />
+        <main className="w-3/4 pl-8">
+          <article>
+            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+            <p className="text-muted-foreground mb-8">
+              {new Date(post.date).toLocaleDateString()} - {post.readingTime} min read
+            </p>
+            <img src={post.image} alt={post.title} className="rounded-lg mb-8 w-full" />
+            <div className="prose prose-invert max-w-none">
+              {post.content}
+            </div>
+          </article>
+        </main>
+      </div>
       <Footer />
     </div>
   );
