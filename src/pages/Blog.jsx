@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { blogData } from "../lib/blogData";
+import { useState, useEffect } from "react";
+import { fetchAPI } from "../lib/api";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ThemeToggle } from "../components/ThemeToggle";
@@ -7,10 +7,27 @@ import { StarBackground } from "@/components/StarBackground";
 import { BlogCard } from "../components/BlogCard";
 
 export const Blog = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredBlogData = blogData.filter((post) =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await fetchAPI("/blogs");
+        setPosts(res.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getPosts();
+  }, []);
+
+  const filteredPosts = posts.filter((post) =>
+    post.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -31,11 +48,16 @@ export const Blog = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-8 max-w-3xl mx-auto">
-          {filteredBlogData.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+        {loading && <p className="text-center">Loading posts...</p>}
+        {error && <p className="text-center text-red-500">Error: {error}</p>}
+
+        {!loading && !error && (
+          <div className="flex flex-col gap-8 max-w-3xl mx-auto">
+            {filteredPosts.map((post) => (
+              <BlogCard key={post.id} id={post.id} post={post.attributes} />
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
     </div>

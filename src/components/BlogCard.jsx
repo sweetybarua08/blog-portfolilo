@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 
-export const BlogCard = ({ post }) => {
+const API_URL = "http://localhost:1337";
+
+export const BlogCard = ({ post, id }) => {
+  const imageUrl = post.image?.data?.attributes?.url
+    ? `${API_URL}${post.image.data.attributes.url}`
+    : "/projects/project1.png"; // Fallback image
+
   return (
     <div className="bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-      <Link to={`/blog/${post.id}`} className="flex flex-col md:flex-row">
+      <Link to={`/blog/${id}`} className="flex flex-col md:flex-row">
         <div className="md:w-1/3">
-          <img src={post.image} alt={post.title} className="w-full h-full object-cover"/>
+          <img src={imageUrl} alt={post.title} className="w-full h-full object-cover"/>
         </div>
         <div className="p-6 md:w-2/3">
           <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
