@@ -28,9 +28,9 @@ export const BlogPost = () => {
     const getPost = async () => {
       try {
         // The API seems to return an array even for a single post, so we take the first element.
-        const res = await fetchAPI(`/blogs/${id}`);
-        if (res.data && res.data.length > 0) {
-          setPost(res.data[0]);
+        const res = await fetchAPI(`/blogs/${id}?populate=*`);
+        if (res.data) {
+          setPost(res.data);
         } else {
           setPost(null); // Or handle as a "not found" case
         }
