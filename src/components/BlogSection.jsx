@@ -13,7 +13,7 @@ export const BlogSection = () => {
       try {
         const res = await fetchAPI("/blogs");
         // Sort by date and get the 3 most recent
-        const sortedPosts = res.data.sort((a, b) => new Date(b.attributes.date) - new Date(a.attributes.date));
+        const sortedPosts = res.data.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         setRecentPosts(sortedPosts.slice(0, 3));
       } catch (err) {
         setError(err.message);
@@ -35,7 +35,7 @@ export const BlogSection = () => {
         {!loading && !error && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {recentPosts.map((post) => (
-              <BlogCard key={post.id} id={post.id} post={post.attributes} />
+              <BlogCard key={post.id} id={post.id} post={post} />
             ))}
           </div>
         )}

@@ -8,6 +8,16 @@ import { StarBackground } from "@/components/StarBackground";
 import { NotFound } from "./NotFound";
 import { OtherBlogs } from "../components/OtherBlogs";
 
+const extractFullContent = (description) => {
+  try {
+    const linkNode = description[0]?.children?.find(child => child.type === 'link');
+    const textNode = linkNode?.children?.find(child => child.type === 'text');
+    return textNode?.text || "Content not available.";
+  } catch (e) {
+    return "Content not available.";
+  }
+}
+
 export const BlogPost = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -17,8 +27,13 @@ export const BlogPost = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
+        // The API seems to return an array even for a single post, so we take the first element.
         const res = await fetchAPI(`/blogs/${id}`);
-        setPost(res.data);
+        if (res.data && res.data.length > 0) {
+          setPost(res.data[0]);
+        } else {
+          setPost(null); // Or handle as a "not found" case
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -40,6 +55,8 @@ export const BlogPost = () => {
     return <NotFound />;
   }
 
+  const content = extractFullContent(post.description);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <ThemeToggle />
@@ -48,12 +65,14 @@ export const BlogPost = () => {
       <div className="container mx-auto px-4 py-8 flex pt-20">
         <main className="w-full">
           <article>
-            <h1 className="text-4xl font-bold mb-4">{post.attributes.title}</h1>
+            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
             <p className="text-muted-foreground mb-8">
-              {new Date(post.attributes.date).toLocaleDateString()} - {post.attributes.readingTime} min read
+              {new Date(post.publishedAt).toLocaleDateString()}
             </p>
             <div className="prose prose-invert max-w-none">
-              {post.attributes.content}
+              {content.split('\\n\\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </article>
         </main>

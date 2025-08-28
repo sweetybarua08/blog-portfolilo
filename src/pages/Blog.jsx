@@ -16,6 +16,7 @@ export const Blog = () => {
     const getPosts = async () => {
       try {
         const res = await fetchAPI("/blogs");
+        console.log("Fetched posts:", JSON.stringify(res.data, null, 2));
         setPosts(res.data);
       } catch (err) {
         setError(err.message);
@@ -27,7 +28,7 @@ export const Blog = () => {
   }, []);
 
   const filteredPosts = posts.filter((post) =>
-    post.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -52,9 +53,9 @@ export const Blog = () => {
         {error && <p className="text-center text-red-500">Error: {error}</p>}
 
         {!loading && !error && (
-          <div className="flex flex-col gap-8 max-w-3xl mx-auto">
+          <div data-testid="blog-posts-container" className="flex flex-col gap-8 max-w-3xl mx-auto">
             {filteredPosts.map((post) => (
-              <BlogCard key={post.id} id={post.id} post={post.attributes} />
+              <BlogCard key={post.id} id={post.id} post={post} />
             ))}
           </div>
         )}

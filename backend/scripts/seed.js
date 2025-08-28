@@ -6,6 +6,7 @@ const mime = require('mime-types');
 const { categories, authors, articles, global, about } = require('../data/data.json');
 
 async function seedExampleApp() {
+  await grantPermissions();
   const shouldImportSeedData = await isFirstRun();
 
   if (shouldImportSeedData) {
@@ -237,6 +238,15 @@ async function importAuthors() {
 }
 
 async function importSeedData() {
+  // Create all entries
+  await importCategories();
+  await importAuthors();
+  await importArticles();
+  await importGlobal();
+  await importAbout();
+}
+
+async function grantPermissions() {
   // Allow read of application content types
   await setPublicPermissions({
     article: ['find', 'findOne'],
@@ -244,14 +254,8 @@ async function importSeedData() {
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    blog: ['find', 'findOne'],
   });
-
-  // Create all entries
-  await importCategories();
-  await importAuthors();
-  await importArticles();
-  await importGlobal();
-  await importAbout();
 }
 
 async function main() {
