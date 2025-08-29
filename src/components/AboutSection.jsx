@@ -12,7 +12,7 @@ export const AboutSection = () => {
           <img
             src="./src/assets/sweety.jpg"
             alt="Sweety"
-            className="w-32 h-32 rounded-full mx-auto shadow-md"
+            className="w-42 h-45 rounded-full mx-auto shadow-md"
           />
           <h2 className="text-3xl md:text-4xl font-bold">
             Hi, I’m <span className="text-primary">Sweety 👋</span>
@@ -20,11 +20,12 @@ export const AboutSection = () => {
           <p className="text-lg text-muted-foreground ">
             Software Engineer | Data Enthusiast | AI Explorer
           </p>
-          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <SocialLinks className="flex justify-center gap-8" />
+          {/* <div className="text-center max-w-3xl mx-auto space-y-2">
           <h3 className="text-2xl font-semibold">Contact</h3>
-          </div>
+          </div> */}
           <hr />
-          <SocialLinks className="flex justify-center gap-4" />
+        
         </div>
 
         {/* Professional Story */}
