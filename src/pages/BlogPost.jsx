@@ -4,9 +4,7 @@ import { fetchAPI } from "../lib/api";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { StarBackground } from "@/components/StarBackground";
 import { NotFound } from "./NotFound";
-import { OtherBlogs } from "../components/OtherBlogs";
 
 const extractFullContent = (description) => {
   try {
@@ -16,10 +14,10 @@ const extractFullContent = (description) => {
   } catch (e) {
     return "Content not available.";
   }
-}
+};
 
 export const BlogPost = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // <-- numeric id from URL
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,12 +25,12 @@ export const BlogPost = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        // The API seems to return an array even for a single post, so we take the first element.
-        const res = await fetchAPI(`/blogs/${id}?populate=*`);
-        if (res.data) {
-          setPost(res.data);
+        // fetch by numeric ID using Strapi filters
+        const res = await fetchAPI(`/blogs?filters[id][$eq]=${id}&populate=*`);
+        if (res.data && res.data.length > 0) {
+          setPost(res.data[0]); // take the first match
         } else {
-          setPost(null); // Or handle as a "not found" case
+          setPost(null);
         }
       } catch (err) {
         setError(err.message);
@@ -60,7 +58,6 @@ export const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <ThemeToggle />
-      {/* <StarBackground /> */}
       <Navbar />
       <div className="container mx-auto px-4 py-8 flex pt-20">
         <main className="w-full">
@@ -70,7 +67,7 @@ export const BlogPost = () => {
               {new Date(post.publishedAt).toLocaleDateString()}
             </p>
             <div className="prose prose-invert max-w-none">
-              {content.split('\\n\\n').map((paragraph, index) => (
+              {content.split("\n\n").map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
