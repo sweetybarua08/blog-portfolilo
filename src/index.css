@@ -160,3 +160,18 @@
   padding: 0;
   text-align: center;
 }
+
+/* Blog Post Styles */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  @apply border-b border-border pb-2 mb-4;
+}
+
+.blog-content hr {
+  @apply my-8 border-t-2 border-border;
+}
+
+.blog-content pre {
+  @apply bg-card p-4 rounded-lg my-4;
+}
