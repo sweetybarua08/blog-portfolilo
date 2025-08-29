@@ -4,6 +4,7 @@ import { fetchAPI } from "../lib/api";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ThemeToggle } from "../components/ThemeToggle";
+// import { OtherBlogs } from "../components/OtherBlogs";
 import { NotFound } from "./NotFound";
 
 const extractFullContent = (description) => {
