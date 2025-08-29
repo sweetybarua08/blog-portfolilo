@@ -25,7 +25,7 @@ export const AboutSection = () => {
           <h3 className="text-2xl font-semibold">Contact</h3>
           </div> */}
           <hr />
-        
+
         </div>
 
         {/* Professional Story */}
