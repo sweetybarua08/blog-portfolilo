@@ -9,7 +9,7 @@ import { SocialLinks } from "../components/SocialLinks";
 export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <SocialLinks />
+      <SocialLinks className="fixed right-4 top-1/2 -translate-y-1/2" />
       {/* Theme Toggle */}
       <ThemeToggle />
       {/* Background Effects */}

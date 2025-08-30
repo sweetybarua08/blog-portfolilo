@@ -1,8 +1,9 @@
 import { Github, Linkedin } from "lucide-react";
+import { cn } from "../lib/utils";
 
-export const SocialLinks = () => {
+export const SocialLinks = ({ className }) => {
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-50">
+    <div className={cn("flex flex-col gap-6 z-50", className)}>
       <a
         href="https://www.linkedin.com/in/sweetybaruah/"
         target="_blank"
