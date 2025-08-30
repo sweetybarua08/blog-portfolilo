@@ -11,9 +11,9 @@ export const AboutSection = () => {
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <img
-            src="./src/assets/sweety.jpg"
+            src="./src/assets/swwty.jpg"
             alt="Sweety"
-            className="w-62 h-65 rounded-full mx-auto shadow-md"
+            className="w-52 h-65 rounded-full mx-auto shadow-md"
           />
           <h2 className="text-3xl md:text-4xl font-bold">
             Hi, I’m <span className="text-primary">Sweety 👋</span>
@@ -31,7 +31,7 @@ export const AboutSection = () => {
  
 
         {/* Professional Story */}
-        <div className="text-center max-w-3xl mx-auto space-y-0">
+        <div className="">
           {/* <h3 className="text-2xl font-semibold">About Me</h3> */}
           <p className="text-lg text-muted-foreground">
             I started my journey in Computer Science with a deep curiosity for how data shapes decisions. From teaching C++ & Data Structures to building scalable Django applications, I’ve loved every step of turning ideas into functional software.
