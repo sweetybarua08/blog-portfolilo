@@ -1,5 +1,7 @@
 import { TechStack } from "./TechStack";
 import { PopularRepos } from "./PopularRepos";
+import { SocialLinks } from "../components/SocialLinks";
+
 
 export const AboutSection = () => {
   return (
@@ -9,9 +11,9 @@ export const AboutSection = () => {
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <img
-            src="./src/assets/prof.png"
+            src="./src/assets/sweety.jpg"
             alt="Sweety"
-            className="w-32 h-32 rounded-full mx-auto shadow-md"
+            className="w-62 h-65 rounded-full mx-auto shadow-md"
           />
           <h2 className="text-3xl md:text-4xl font-bold">
             Hi, I’m <span className="text-primary">Sweety 👋</span>
@@ -20,9 +22,14 @@ export const AboutSection = () => {
             Software Engineer | Data Enthusiast | AI Explorer
           </p>
         </div>
+        <SocialLinks className="flex justify-center gap-8" />
+
+        <hr />
+        
+ 
 
         {/* Professional Story */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-0">
           {/* <h3 className="text-2xl font-semibold">About Me</h3> */}
           <p className="text-lg text-muted-foreground">
             I started my journey in Computer Science with a deep curiosity for how data shapes decisions. From teaching C++ & Data Structures to building scalable Django applications, I’ve loved every step of turning ideas into functional software.
