@@ -6,7 +6,7 @@ import { SocialLinks } from "../components/SocialLinks";
 export const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl space-y-16">
+      <div className="container mx-auto max-w-5xl space-y-8">
 
         {/* Hero Section */}
         <div className="text-center space-y-4">
@@ -18,11 +18,13 @@ export const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold">
             Hi, I’m <span className="text-primary">Sweety 👋</span>
           </h2>
-          <p className="text-lg text-muted-foreground ">
-            Software Engineer | Data Enthusiast | AI Explorer
-          </p>
+          <div className="space-y-2">
+            <p className="text-lg text-muted-foreground ">
+              Software Engineer | Data Enthusiast | AI Explorer
+            </p>
+            <SocialLinks className="flex-row justify-center gap-8 pt-2" />
+          </div>
         </div>
-        <SocialLinks className="flex justify-center gap-8" />
 
         <hr />
         
